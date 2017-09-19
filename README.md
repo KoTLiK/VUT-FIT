@@ -1,5 +1,5 @@
 # **VUT-FIT BIT** Projects 2015-2018
----
+
 ## **2015/2016**
 ### IJC
 &nbsp; &nbsp; &nbsp; DU1 Points: 15/15
@@ -34,7 +34,7 @@
 
 4. proj3.h *(Dokumentácia zdrojového kódu)* &nbsp; Points: 3/4
 
----
+
 ## **2016/2017**
 ### IAL
 &nbsp; &nbsp; &nbsp; DU1 Points: 10/10
