@@ -1,0 +1,37 @@
+.TH IPK-CLIENT 1
+.SH NAME
+ipk\-client \- klient pre výpočet jednoduchých matematických operácií
+.SH SYNOPSIS
+.B ipk\-client
+.IR hostname
+.SH DESCRIPTION
+.B ipk\-klient
+je klient pre výpočet základných matematických operácií sčítanie, odčítanie, násobenie a delenie. Zahajuje komunikáciu naviazaním TCP spojenia so serverom na porte 55555. Následne zašle serveru správu
+.IR HELLO
+a očakáva od serveru správu
+.IR BYE
+alebo
+.IR SOLVE .
+Klient očakáva, že každá správa je ukončená znakom '\\n' ako delimiter správ. Zároveň je každá správa kontrolovaná či dodržuje správny formát, pokiaľ je nekorektná, bude ignorovaná. Pokiaľ príde viac správ naraz, tak sú jednotlivé správy postupne obslúžené.
+.TP
+Formát správ:
+HELLO [\fIid\fR]\\n \- zasiela klient, kde \fIid\fR je MD5 hash loginu
+
+RESULT [\fIresult\fR]\\n \- zasiela klient, kde \fIresult\fR je výsledok výpočtu zarovnaný na 2 desatinné miesta
+
+RESULT ERROR\\n \- zasiela klient v prípade chyby výpočtu
+
+SOLVE [\fIcislo\fR] [operator] [\fIcislo\fR]\\n \- zasiela server, kde \fIcislo\fR má formát celočíselného čísla
+
+BYE [secret]\\n \- ukončovacia správa, ktorú zasiela server
+
+.SH OPTIONS
+.IR hostname
+\- môže byť IPv4 alebo IPv6 adresa, prípadne doménové meno.
+.SH RETURN VALUE
+Program vracia 0, pokiaľ všetko prebehlo úspešne. V prípade chyby vracia 1.
+.SH BUGS
+Klient očakáva \fIcislo\fR v rozsahu INT_MIN až INT_MAX, inak je správa vyhodnotená ako chybná a je zaslaná správa RESULT ERROR\\n.
+Klient rovnako očakáva dostupnú knižnicu <openssl/md5.h>.
+.SH AUTHOR
+Autor klienta a manualovej stránky je Milan Augustín (xaugus09).

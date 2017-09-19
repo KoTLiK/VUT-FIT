@@ -1,0 +1,178 @@
+#!/bin/sh
+
+##
+## Project:		IOS - proj1
+## File:		dirstat [-i FILE_ERE] [DIR]
+## Author:		Milan Augustín, xaugus09
+## Date:		Who knows; 1459195279
+##
+
+#export LC_ALL=POSIX
+OLDIFS=$IFS
+IFS='
+'
+
+idir=StrasneVelaZnakovAbySomNemuselPouzivatIfyPreIgnoraciuAEsteParNulAbyToBoloStoZnakov00000000000000000
+ifile=StrasneVelaZnakovAbySomNemuselPouzivatIfyPreIgnoraciuAEsteParNulAbyToBoloStoZnakov00000000000000000
+
+while getopts :i: param; do
+	case "$param" in
+		i)	idir=$(echo "$OPTARG" | tr '^' '/' | tr '$' '/')
+			ifile=$(echo "$OPTARG" | tr '^' '/');;
+		*)	echo "Pouzi -i s FILE_ERE" >&2
+			echo "  dirstat [-i FILE_ERE] [DIR]" >&2
+			exit 1;;
+	esac
+done
+
+OPTIND=$((OPTIND - 1)); shift $OPTIND
+
+if [ "$#" -gt 1 ]; then
+	echo "Prilis vela argumentov" >&2
+	echo "  dirstat [-i FILE_ERE] [DIR]" >&2
+	exit 1
+fi
+
+
+# Root directory: mRD
+if [ "$#" -eq 0 ]; then mRD=$(pwd)
+elif [ ! -d "$1" ]; then
+	echo "Neexistujuca cesta [DIR]" >&2; exit 1
+else mRD="$1"
+fi
+
+ere=$(echo "$mRD" | egrep "$idir" | wc -l)
+if [ $ere -eq 1 ]; then
+	echo "FILE_ERE nesmie pokryvat nazov korenoveho adresara" >&2; exit 1
+fi
+
+
+# Directories: mND
+mSTACK=$(find "$mRD" -type d | awk '{print $0"/"}' | egrep -v "$idir")
+	# variable mSTACK -> NEignorovane adresare/cesty
+mND=$(find "$mRD" -type d | awk '{print $0"/"}' | egrep -v "$idir" | wc -l)
+
+
+# Max depth: mDD
+mDD=1
+while true; do
+	stav=$(find "$mRD" -mindepth "$mDD" -type d | egrep -v "$idir" | wc -l)
+	if [ "$stav" -eq 0 ]; then break; fi
+	mDD=$((mDD + 1))
+done
+
+
+# All files: mNF
+mNF=0
+for i in $mSTACK; do
+	mNOF=$(find "$i" -maxdepth 1 -type f | egrep -v "$ifile" | wc -l); mNF=$((mNF + mNOF))
+	if [ $mNOF -eq 0 ]; then
+		continue; fi
+	mSTUCK=$(find "$i" -maxdepth 1 -type f | egrep -v "$ifile")
+	for x in $mSTUCK; do
+		mSOF=$(ls -l "$x" | awk '{print $5}'); mSIZE=$(echo "$mSIZE"; echo "$mSOF")
+	done
+done
+
+
+#	# Average no. of files: mAF
+	mAF=$((mNF / mND))
+
+	if [ $mNF -eq 0 ]; then mLF="N/A"; mAS="N/A"; mMS="N/A"
+	else
+		mSIZE=$(echo $mSIZE | tr ' ' '\n' | sort -n)
+
+		# Largest file: mLF
+		mLF=$(echo $mSIZE | tr ' ' '\n' | tail -1)
+
+		# Average file size: mAS
+		mSUM=$(echo $mSIZE | tr ' ' '\n' | awk '{sum += $1} END {print sum}'); mAS=$((mSUM / mNF))
+
+		# File size median: mMS
+		Pflag=$((mNF % 2))
+		if [ $Pflag -eq 0 ]; then
+			Med1=$((mNF / 2)); Med2=$(((mNF / 2) + 1)); idx=1; suma=0
+			for i in $mSIZE; do
+				if [ $idx -eq $Med1 ]; then suma=$((suma + i)); fi
+				if [ $idx -eq $Med2 ]; then suma=$((suma + i)); break; fi
+				idx=$((idx + 1))
+			done
+			mMS=$((suma / 2))
+		else
+			Med=$(((mNF / 2) + 1)); idx=1
+			for i in $mSIZE; do
+				if [ $idx -eq $Med ]; then mMS=$i; break; fi
+				idx=$((idx + 1))
+			done
+		fi
+	fi
+
+
+# File extensions: mEL
+mEL=$(for i in $mSTACK; do find "$i" -maxdepth 1 -type f | egrep -v "$ifile"
+done | rev | cut -f1 -sd '/' | rev | grep -v "^\.[^.][^.]*$" | rev | cut -f1 -sd '.' | rev | sort -u | grep "^[[:alnum:]][[:alnum:]]*$")
+
+
+IFS=$OLDIFS
+# {
+	echo "Root directory:" $mRD
+	echo "Directories:" $mND
+	echo "Max depth:" $mDD
+	echo "Average no. of files:" $mAF
+	echo "All files:" $mNF
+	echo "  Largest file:" $mLF
+	echo "  Average file size:" $mAS
+	echo "  File size median:" $mMS
+	echo -n "File extensions: "; echo $mEL | tr ' ' ','
+	if [ -z "$mEL" ]; then exit 0; fi
+# }
+IFS='
+'
+
+
+for ext in $mEL; do
+	mNF=0; mLF=0; mAS=0; mMS=0; mSIZE=
+
+	for i in $mSTACK; do
+		mNOF=$(find "$i" -maxdepth 1 -type f | egrep -v "$ifile" | grep "[^/]\.$ext$" | wc -l); mNF=$((mNF + mNOF))
+		if [ $mNOF -eq 0 ]; then
+			continue; fi
+		mSTUCK=$(find "$i" -maxdepth 1 -type f | egrep -v "$ifile" | grep "[^/]\.$ext$")
+		for x in $mSTUCK; do
+			mSOF=$(ls -l "$x" | awk '{print $5}'); mSIZE=$(echo "$mSIZE"; echo "$mSOF")
+		done
+	done
+
+	mSIZE=$(echo $mSIZE | tr ' ' '\n' | sort -n)
+
+	# Largest file .ext: mLF
+	mLF=$(echo $mSIZE | tr ' ' '\n' | tail -1)
+
+	# Average file size .ext: mAS
+	mSUM=$(echo $mSIZE | tr ' ' '\n' | awk '{sum += $1} END {print sum}'); mAS=$((mSUM / mNF))
+
+	# File size median .ext: mMS
+	Pflag=$((mNF % 2))
+	if [ $Pflag -eq 0 ]; then
+		Med1=$((mNF / 2)); Med2=$(((mNF / 2) + 1)); idx=1; suma=0
+		for i in $mSIZE; do
+			if [ $idx -eq $Med1 ]; then suma=$((suma + i)); fi
+			if [ $idx -eq $Med2 ]; then suma=$((suma + i)); break; fi
+			idx=$((idx + 1))
+		done
+		mMS=$((suma / 2))
+	else
+		Med=$(((mNF / 2) + 1)); idx=1
+		for i in $mSIZE; do
+			if [ $idx -eq $Med ]; then mMS=$i; break; fi
+			idx=$((idx + 1))
+		done
+	fi
+
+	echo "Files .$ext:" $mNF
+	echo "  Largest file .$ext:" $mLF
+	echo "  Average file size .$ext:" $mAS
+	echo "  File size median .$ext:" $mMS
+done
+
+exit 0

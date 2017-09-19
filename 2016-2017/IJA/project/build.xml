@@ -1,0 +1,40 @@
+<project>
+
+    <target name="clean">
+        <delete dir="build" />
+        <delete dir="dest-client" />
+        <delete dir="doc" />
+    </target>
+
+    <target name="makedir">
+			<mkdir dir="build" />
+            <mkdir dir="dest-client" />
+            <mkdir dir="doc" />
+    </target>
+
+    <target name="compile" depends="clean, makedir">
+		<exec executable="/bin/bash">
+			<arg value="lib/get-libs.sh"/>
+		</exec>
+        <javac srcdir="src" destdir="build" includeantruntime="false" />
+        <jar destfile="dest-client/ija-client.jar" basedir="build">
+            <manifest>
+                <attribute name="Main-Class" value="ija.ija2016.Solitaire"/>
+            </manifest>
+            <fileset dir="lib">
+                <include name="images/**/*.*" />
+            </fileset>
+        </jar>
+        <javadoc encoding="UTF-8" charset="UTF-8" docencoding="UTF-8" packagenames="ija" sourcepath="src/ija" destdir="doc">
+       		<fileset dir="src/ija">
+                <include name="**/*.java" />
+           </fileset>
+    	</javadoc>
+    </target>
+
+    <target name="run" depends="compile">
+        <java jar="dest-client/ija-client.jar" fork="true"/>
+    </target>
+
+</project>
+

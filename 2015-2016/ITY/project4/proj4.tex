@@ -1,0 +1,43 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[left=2cm, text={17cm, 24cm}, top=3cm]{geometry}
+\usepackage{times}
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\bibliographystyle{czplain}
+\newcommand{\myuv}[1]{\quotedblbase #1\textquotedblleft}
+
+\begin{document} %%%%%%%%%%%%% ZACIATOK DOKUMENTU %%%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+\textsc{{\Huge Vysoké učení technické v~Brně}\\{\huge Fakulta informačních technologií\\}}\vspace{\stretch{0.382}}
+{\LARGE Typografie a~publikování\,--\,4.~projekt\\[2mm]
+\Huge Bibliografické citácie}
+\vspace{\stretch{0.618}}
+\end{center}
+{\Large \today \hfill Milan Augustín}
+\end{titlepage}
+
+\newpage
+
+\section{Typografia}
+
+Samotná typografia má hlboké korene. Nejde o~to ako stará typografia je, ale o~jej význam, ako predávať informácie. Typografia je tým, čo dáva textu vizuálnu podobu \cite{Ambrose:Typografie}. Slovo typografia je odvodené z~gréckeho \emph{typós} (znaky) a~\emph{graphein} (písať) \cite{Olsak:Typografie}. Toto nám už teraz veľmi napovedá, o~čom sa typografia zaoberá. V~minulosti sa pripisovala k~tlačiarenskému priemyslu. A~v~priebehu času sa z~nej vyformovala náuka o~písme, jeho správnom používaní, či jeho grafické usporiadanie. Avšak dnes už nájdeme nie len knihy a~články či časopisy o~typografii \cite{Typo:Mag}, ale aj typografické systémy ako napríklad {\LaTeX}.
+
+\section{{\LaTeX}}
+
+V~70. rokov Donald Knuth vyvinul sádzací systém {\TeX}. Ide o~značkovací jazyk, ktorý sa snaží, aby autor dokumentu nepremýšľal nad designom dokumentu, ale len o~texte, ktorý píše a~o~zvyšok sa postarajú návrhári dokumentov \cite{Mittelbach:Introduction}. Avšak pánovi Lesliemu Lamportovi sa nepáčila zložitosť tohto systému a~rozhodol sa ho zjednodušiť. V~roku 1985 vydáva projekt {\LaTeX}, ktorý je postavený na základe {\TeX}u. Pomocou mnohých makier a~šablón približuje nie len bežným ľudom, ale aj profesionálom, ako efektívne a~profesionálne sa môžu vysádzať dokumenty \cite{Martinek:Latex}. Dnes však už projekt {\TeX} sa považuje za ukončený, v~dôsledku čoho je zakázané používať názov {\TeX} pre ďalšie programy. Avšak tento projekt teraz môžme nájsť v~podobe voľne dostupných zdrojových kódov \cite{Syropoulos:Zbornik}.
+
+\section{Prvé krôčiky}
+
+Pokiaľ sa vám zapáčil tento typografický systém, môžte ho kľudne vyskúšať. Zohnať si ho môžete aj tu \cite{Martinek:Latex}. Ale najskôr by ste si mali prejsť knihu pre začiatočníkov \cite{Rybicka:Zacatecniky}. V~prípade záujmu o~cudzojazičnú literatúru, som si pripravil jednu v~angličtine \cite{Helmut:Guide}. Po prvom oboznámení so základmi {\LaTeX}u vás možno bude zaujímať, ako vlastne funguje sadzba matematických vzorcov, ktorá je veľmi jednoduchá, keďže formátovacie značky sú priamo v~texte \cite{Math:Latex}.
+
+\section{Prvé práce}
+
+Tým ktorým prirástol {\LaTeX} k~srdcu, ho určite budú používať vo svojom voľnom čase. Ale je tu aj možnosť vypracovať napríklad bakalársku \cite{Simek:Editor} či diplomovú \cite{Bednar:OpenType} prácu v~tomto obore.
+
+\newpage
+
+\bibliography{zdroje}
+
+\end{document}
