@@ -1,0 +1,2 @@
+# VUT-FIT
+School projects
