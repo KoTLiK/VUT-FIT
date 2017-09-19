@@ -48,7 +48,7 @@
 
 3. Part &nbsp; points: 5/5
 
-4. & 5. Part &nbsp; points: 16/19
+4. & 5. Parts &nbsp; points: 16/19
 
 ### IJA
 &nbsp; &nbsp; &nbsp; Card game *Solitaire - Klondike*, written in Java SE 8
