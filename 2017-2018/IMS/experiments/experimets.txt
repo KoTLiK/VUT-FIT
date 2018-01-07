@@ -1,0 +1,190 @@
+IMS Project in SIMLIB/C++ (2017/2018)
+
+###  1  ### 100-50 default
+	Usage linky #1 80.8504 %
+	Usage linky #2 95.6076 %
+	Usage linky #3 72.1187 %
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 100  (100 used, 0 free)                      |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 41469                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 100                             |
+	|  Average used capacity = 98.8907                         |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 50  (49 used, 1 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 22447                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 50                              |
+	|  Average used capacity = 47.9429                         |
+	+----------------------------------------------------------+
+
+###  2  ### 120-60 default
+	Usage linky #1 94.5033 %
+	Usage linky #2 99.5873 %
+	Usage linky #3 92.325 %
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 120  (118 used, 2 free)                      |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 48896                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 120                             |
+	|  Average used capacity = 116.457                         |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 60  (50 used, 10 free)                       |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 25588                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 60                              |
+	|  Average used capacity = 54.543                          |
+	+----------------------------------------------------------+
+
+###  2  ### 130-60 default
+	Usage linky #1 98.5378 %
+	Usage linky #2 99.6184 %
+	Usage linky #3 98.1693 %
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 130  (128 used, 2 free)                      |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 51741                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 130                             |
+	|  Average used capacity = 122.731                         |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 60  (53 used, 7 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 25700                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 60                              |
+	|  Average used capacity = 54.5792                         |
+	+----------------------------------------------------------+
+
+###  3  ### 100-50 zrychleny proces
+	Usage linky #1 89.0191 %
+	Usage linky #2 98.6312 %
+	Usage linky #3 84.2979 %
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 100  (98 used, 2 free)                       |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 45981                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 100                             |
+	|  Average used capacity = 97.91                           |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 50  (46 used, 4 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 24789                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 50                              |
+	|  Average used capacity = 46.6309                         |
+	+----------------------------------------------------------+
+
+###  4  ### 115-50 zrychleny proces
+	Usage linky #1 96.8304 %
+	Usage linky #2 99.3661 %
+	Usage linky #3 95.61 %
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 115  (113 used, 2 free)                      |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 51241                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 115                             |
+	|  Average used capacity = 109.955                         |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 50  (48 used, 2 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 24546                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 50                              |
+	|  Average used capacity = 46.5093                         |
+	+----------------------------------------------------------+
+
+###  5  ### 130-60 default
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 130  (119 used, 11 free)                     |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 51617                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 130                             |
+	|  Average used capacity = 122.944                         |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 60  (56 used, 4 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 25635                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 60                              |
+	|  Average used capacity = 54.7047                         |
+	+----------------------------------------------------------+
+
+###  5  ### 130-60 toaleta kazde 3 hodiny
+
+	+----------------------------------------------------------+
+	| STORE Typ A                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 130  (129 used, 1 free)                      |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 52263                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 130                             |
+	|  Average used capacity = 124.39                          |
+	+----------------------------------------------------------+
+
+	+----------------------------------------------------------+
+	| STORE Typ B                                              |
+	+----------------------------------------------------------+
+	|  Capacity = 60  (54 used, 6 free)                        |
+	|  Time interval = 0 - 3.1536e+07                          |
+	|  Number of Enter operations = 25868                      |
+	|  Minimal used capacity = 1                               |
+	|  Maximal used capacity = 60                              |
+	|  Average used capacity = 55.1832                         |
+	+----------------------------------------------------------+
+
+###  5  ###  Enter operations difference
+	Typ A: 646
+	Typ B: 233
+
+
